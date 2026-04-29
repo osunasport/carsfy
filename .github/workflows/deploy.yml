@@ -1,4 +1,4 @@
-name: Deploy to Plesk (new.carsfy.es)
+name: Deploy to Plesk (carsfy.es)
 
 on:
   push:
@@ -25,5 +25,5 @@ jobs:
           PLESK_USER: ${{ secrets.PLESK_USER }}
           PLESK_PASS: ${{ secrets.PLESK_PASS }}
         run: |
-          git remote add plesk "https://${PLESK_USER}:${PLESK_PASS}@new.carsfy.es/plesk-git/new.git"
+          git remote add plesk "https://${PLESK_USER}:${PLESK_PASS}@carsfy.es/plesk-git/newcarsfy.git"
           git push plesk HEAD:master --force
