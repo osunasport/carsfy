@@ -1,0 +1,29 @@
+name: Deploy to Plesk (new.carsfy.es)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Push to Plesk server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.email "mg@carsfy.es"
+          git config user.name "CARSFY Deploy Bot"
+
+      - name: Push to Plesk remote
+        env:
+          PLESK_USER: ${{ secrets.PLESK_USER }}
+          PLESK_PASS: ${{ secrets.PLESK_PASS }}
+        run: |
+          git remote add plesk "https://${PLESK_USER}:${PLESK_PASS}@new.carsfy.es/plesk-git/new.git"
+          git push plesk HEAD:master --force
