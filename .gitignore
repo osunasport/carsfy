@@ -1,0 +1,23 @@
+# Credenciales — nunca viajan al repo
+.env
+.env.*
+!.env.example
+
+# Dependencias
+/vendor/
+/node_modules/
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+
+# Logs
+*.log
+/logs/
+
+# Cache
+/cache/
